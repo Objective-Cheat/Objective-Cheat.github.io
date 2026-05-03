@@ -1,9 +1,549 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Site</title>
-  </head>
-  <body>
-    <h1>Hello, world</h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NEBULA | CS2 CHEAT</title>
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 10%, #0c0b14 0%, #030207 100%);
+      color: #eaeaf0;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* animated background subtle grid & glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(120, 50, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 50, 255, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* main card container */
+    .main-container {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(10, 8, 20, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(180, 130, 255, 0.2);
+      border-radius: 3.5rem;
+      padding: 2.5rem 2.8rem;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 80px rgba(138, 43, 226, 0.2);
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      animation: floatIn 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* header with logo top corner */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(20, 15, 35, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.6rem 1.8rem;
+      border-radius: 4rem;
+      border: 1px solid rgba(200, 150, 255, 0.3);
+      box-shadow: 0 0 20px rgba(150, 70, 255, 0.4);
+      animation: logoGlow 3s infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% {
+        box-shadow: 0 0 18px rgba(160, 80, 255, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 32px rgba(190, 100, 255, 0.8);
+      }
+    }
+
+    .logo-icon {
+      font-size: 2.4rem;
+      color: #c084fc;
+      filter: drop-shadow(0 0 8px #a855f7);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-area:hover .logo-icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #e9d5ff, #b385f4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 15px #a55bf0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .version-badge {
+      background: #1e172f;
+      border-radius: 20px;
+      padding: 0.4rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: rgba(40, 25, 60, 0.8);
+      border: 1px solid #b392f0;
+      color: #ddccff;
+      backdrop-filter: blur(5px);
+    }
+
+    /* description */
+    .description-section {
+      margin: 2rem 0 2.8rem;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #cdc2e6;
+      background: rgba(18, 13, 30, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem 2.2rem;
+      border-radius: 3rem;
+      border-left: 4px solid #b77eff;
+      box-shadow: 0 15px 25px -10px rgba(0,0,0,0.6);
+      font-weight: 400;
+      line-height: 1.7;
+      transition: 0.3s;
+    }
+
+    .description i {
+      color: #c58aff;
+      margin-right: 0.4rem;
+    }
+
+    /* screenshots grid */
+    .screenshots-title {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      color: #d6bcff;
+      letter-spacing: 1px;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 2.8rem;
+    }
+
+    .screenshot-card {
+      background: rgba(20, 15, 35, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 2.2rem;
+      padding: 1.3rem;
+      border: 1px solid rgba(180, 130, 250, 0.25);
+      transition: all 0.35s ease;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      animation: cardAppear 0.8s ease backwards;
+    }
+
+    .screenshot-card:nth-child(1) { animation-delay: 0.1s; }
+    .screenshot-card:nth-child(2) { animation-delay: 0.25s; }
+    .screenshot-card:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .screenshot-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(200, 140, 255, 0.6);
+      box-shadow: 0 28px 35px -12px rgba(150, 60, 255, 0.7);
+    }
+
+    .menu-image {
+      background: linear-gradient(145deg, #1b132b, #0a0714);
+      border-radius: 1.5rem;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      border: 1px solid #4d3b6b;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
+      transition: all 0.4s;
+    }
+
+    .screenshot-card:hover .menu-image {
+      border-color: #b77eff;
+      box-shadow: inset 0 0 35px rgba(160, 100, 255, 0.5);
+    }
+
+    /* fake menu elements inside screenshots */
+    .fake-menu {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0.7rem;
+      color: #ccc;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .menu-header-fake {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: #c9b8f0;
+      border-bottom: 1px solid #4c3870;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: 0.3rem;
+      margin: 0.3rem 0;
+      font-size: 0.6rem;
+    }
+
+    .tab {
+      background: #2f224a;
+      padding: 0.15rem 0.5rem;
+      border-radius: 0.9rem;
+      color: #ddd;
+    }
+
+    .tab.active {
+      background: #a05eff;
+      color: white;
+      font-weight: bold;
+    }
+
+    .checkbox-line {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.65rem;
+      margin: 0.25rem 0;
+      color: #cfc3f0;
+    }
+
+    .toggle {
+      width: 22px;
+      height: 12px;
+      background: #5a4b7c;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .toggle.on {
+      background: #b77eff;
+    }
+
+    .toggle::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+    }
+
+    .toggle.on::after {
+      left: 12px;
+    }
+
+    .slider-fake {
+      width: 80%;
+      height: 4px;
+      background: #382b52;
+      border-radius: 4px;
+      margin: 0.3rem 0;
+    }
+
+    .label {
+      font-weight: 600;
+      color: #e4d7ff;
+    }
+
+    .screenshot-label {
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ddceff;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    /* features animated */
+    .features-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.8rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(28, 20, 45, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 0.7rem 1.8rem;
+      border-radius: 2.5rem;
+      font-weight: 500;
+      border: 1px solid #5f4b8b;
+      transition: 0.3s;
+      animation: pulseGlow 2.2s infinite alternate;
+    }
+
+    .feature-item i {
+      color: #c084fc;
+      font-size: 1.2rem;
+      animation: spinSlow 4s infinite linear;
+    }
+
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 8px #a256f0; }
+      100% { box-shadow: 0 0 20px #b76eff; }
+    }
+
+    .footer-note {
+      margin-top: 2.3rem;
+      text-align: center;
+      color: #9488b0;
+      font-size: 0.9rem;
+      border-top: 1px solid #392e54;
+      padding-top: 1.8rem;
+    }
+
+    @media (max-width: 650px) {
+      .main-container {
+        padding: 1.8rem;
+      }
+      .logo-text {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    
+    <!-- Header with logo at top corner -->
+    <div class="header">
+      <div class="logo-area">
+        <i class="fas fa-bolt logo-icon"></i>
+        <span class="logo-text">NEBULA</span>
+        <span class="version-badge">v4.2</span>
+      </div>
+      <div style="display: flex; gap: 0.8rem; align-items: center;">
+        <i class="fas fa-shield-haltered" style="color: #b392f0; font-size: 1.5rem;"></i>
+        <span style="font-weight: 300; color: #cfc2f0;">UNDETECTED</span>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="description-section">
+      <div class="description">
+        <i class="fas fa-crosshairs"></i> 
+        <strong>NEBULA</strong> is the apex <span style="color:#c79bff;">CS2 external cheat</span>, engineered for precision and stealth. 
+        Dominate with <strong>advanced aimbot</strong>, <strong>smooth ESP</strong>, and <strong>recoil control</strong>. 
+        Sleek in-game menu with real-time adjustment. <i class="fas fa-star"></i>
+      </div>
+    </div>
+
+    <!-- Screenshots of menu (mock) -->
+    <div class="screenshots-title">
+      <i class="fas fa-images"></i> <span>MENU INTERFACE</span>
+    </div>
+
+    <div class="screenshots-grid">
+      <!-- Screenshot 1: Aimbot Tab -->
+      <div class="screenshot-card">
+        <div class="menu-image">
+          <div class="fake-menu">
+            <div class="menu-header-fake">
+              <span>NEBULA.CS2</span>
+              <span>⚙️</span>
+            </div>
+            <div class="menu-tabs">
+              <span class="tab active">AIMBOT</span>
+              <span class="tab">VISUALS</span>
+              <span class="tab">MISC</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle on"></span> <span>Enable Aimbot</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle on"></span> <span>Silent Aim</span>
+            </div>
+            <div style="font-size:0.6rem; margin-top:0.2rem;">FOV <span style="color:#c79bff;">3.2°</span></div>
+            <div class="slider-fake" style="background: #a05eff; width:70%;"></div>
+            <div class="checkbox-line"><span class="toggle"></span> Visibility Check</div>
+          </div>
+        </div>
+        <div class="screenshot-label">
+          <i class="fas fa-bullseye"></i> Aimbot Configuration
+        </div>
+      </div>
+
+      <!-- Screenshot 2: Visuals / ESP -->
+      <div class="screenshot-card">
+        <div class="menu-image">
+          <div class="fake-menu">
+            <div class="menu-header-fake">
+              <span>NEBULA.CS2</span>
+              <span>👁️</span>
+            </div>
+            <div class="menu-tabs">
+              <span class="tab">AIMBOT</span>
+              <span class="tab active">VISUALS</span>
+              <span class="tab">MISC</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle on"></span> <span>Player ESP</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle on"></span> <span>Box ESP</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle on"></span> <span>Health Bar</span>
+            </div>
+            <div style="display:flex; gap:0.2rem; margin-top:0.3rem;">
+              <span style="background:#ff4d6d; width:10px; height:10px; border-radius:2px;"></span>
+              <span style="background:#6dff8c; width:10px; height:10px;"></span>
+              <span style="font-size:0.6rem;">Enemy color</span>
+            </div>
+            <div class="checkbox-line"><span class="toggle on"></span> Skeleton</div>
+          </div>
+        </div>
+        <div class="screenshot-label">
+          <i class="fas fa-eye"></i> Visuals / ESP
+        </div>
+      </div>
+
+      <!-- Screenshot 3: Misc / Settings -->
+      <div class="screenshot-card">
+        <div class="menu-image">
+          <div class="fake-menu">
+            <div class="menu-header-fake">
+              <span>NEBULA.CS2</span>
+              <span>🔧</span>
+            </div>
+            <div class="menu-tabs">
+              <span class="tab">AIMBOT</span>
+              <span class="tab">VISUALS</span>
+              <span class="tab active">MISC</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle on"></span> <span>Bunny Hop</span>
+            </div>
+            <div class="checkbox-line">
+              <span class="toggle"></span> <span>Auto Pistol</span>
+            </div>
+            <div style="font-size:0.6rem; margin-top:0.2rem;">Recoil Control</div>
+            <div class="slider-fake" style="width:85%; background:#a05eff;"></div>
+            <div class="checkbox-line"><span class="toggle on"></span> Stream Proof</div>
+            <div style="font-size:0.55rem; color:#b9a9e0; margin-top:0.3rem;">Config: rage.cfg</div>
+          </div>
+        </div>
+        <div class="screenshot-label">
+          <i class="fas fa-sliders-h"></i> Misc & Config
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated features row -->
+    <div class="features-row">
+      <div class="feature-item">
+        <i class="fas fa-shield-alt"></i> <span>Hardware Spoofer</span>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-tachometer-alt"></i> <span>Low CPU Impact</span>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-sync-alt"></i> <span>Instant Updates</span>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-user-secret"></i> <span>Streamproof</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <i class="far fa-clock"></i> NEBULA • Counter-Strike 2 • Modern Interface • 2026
+    </div>
+  </div>
+</body>
 </html>
